@@ -23,13 +23,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                // Deploy the artifact if needed
-                // For example, deploy to a Maven repository
-                bat 'mvn deploy'
-            }
-        }
+      
     }
 
     post {
