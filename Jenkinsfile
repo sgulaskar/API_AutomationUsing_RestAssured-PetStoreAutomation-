@@ -1,15 +1,10 @@
 pipeline {
     agent any
-        tools
-          {
-            maven "MAVEN_HOME"
-          }
+
     stages {
-        stage('Checkout') 
-      {
-            steps 
-            {
-                
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the GitHub repository
                 git 'https://github.com/sgulaskar/API_AutomationUsing_RestAssured-PetStoreAutomation-.git'
             }
         }
@@ -17,14 +12,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Use Maven to build the project
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
                 // Run tests if needed
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
@@ -32,7 +27,7 @@ pipeline {
             steps {
                 // Deploy the artifact if needed
                 // For example, deploy to a Maven repository
-                sh 'mvn deploy'
+                bat 'mvn deploy'
             }
         }
     }
